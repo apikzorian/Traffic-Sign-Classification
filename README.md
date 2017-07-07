@@ -1,55 +1,64 @@
-#**Traffic Sign Recognition** 
+# Traffic Sign Recognition
 
-##Writeup Template
+## Synopsis
 
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+The goal of this project is to take images of 43 different types of German traffic signs and train a neural network to classify them. After we reach an accuracy that we are comfortable with, we can test our classifier on random images of German traffic signs and see how closely we can classify them to their real categories. We will first load our dataset to visualize some of the images and understand what we are looking for. Then, we will apply some preprocessing techniques to the images to help our neural network have an easier time targeting unique aspects of the images. We will then design the architecture of our neural netowork, train it on our images, and test our model on a testing set. Finally, we will go and randomly search on the internet for 5 images of German traffic signs that were not in our data set and see just how well our network performs. Before we start, let's go over the necessary requirements to carry out this project.
 
----
+## Requirements
+
+### Packages & Libraries
+
+- [Python 3.5] (https://www.continuum.io/downloads)
+- [TensorFlow] (https://www.tensorflow.org/versions/)
+- [numpy] (https://anaconda.org/anaconda/numpy)
+- [sklearn] (http://scikit-learn.org/stable/install.html)
+- [OpenCV] (https://anaconda.org/menpo/opencv3)
+
+### Dataset
+
+- [Traffic Signs Data] (https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip)
 
 **Build a Traffic Sign Recognition Project**
 
-The goals / steps of this project are the following:
-* Load the data set (see below for links to the project data set)
-* Explore, summarize and visualize the data set
-* Design, train and test a model architecture
-* Use the model to make predictions on new images
-* Analyze the softmax probabilities of the new images
-* Summarize the results with a written report
 
 
-[//]: # (Image References)
-
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
----
-###Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
+## Data Set Summary & Exploration
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+The data set includes 3 pre-partitioned pickle files, each with its own set of images and labels. These sets constitue for our training, testing, and validation sets. The training set is, as you might have guessed, what our neural network will be trained on, while our validation set will be used to check the accuracy of our network on each run. When the network is done, it has been trained on the training set and the validation set has been bleeding into this training as well. However, our network has yet to see the testing set. The idea of keeping it completely separate from the training process is that if we want to have full confidence in our neural network, it should perform as well on a set of data is has never seen before as it did on the data is trained on. 
 
-###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+### Splitting the data
+Although we are given pre-partitioned data sets, I took the liberty of combining all of this data, shuffling it, and re-distributing the data in my own way. I personally think the training set should be significantly larger than the validation and testing set, since we want to train our network on as much data as possible. After combining the contents of the 3 pickle files and shuffling them, I used sklearn's handy 'train_test_split' function to divide my data into 
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+
+'''
+train_test_split
+'''
+
+Using the pandas library, I was able to calculate summary statistics of the traffic signs data set:
 
 * The size of training set is ?
 * The size of the validation set is ?
 * The size of test set is ?
 * The shape of a traffic sign image is ?
 * The number of unique classes/labels in the data set is ?
+
+
+### Visualizing the data
+
+[image of signs]
+
+Above, we can see a few examples of some of the types of traffic signs we have available in our data set. I used the pandas library to 
+
+## Image Augmentation
+
+
+
 
 ####2. Include an exploratory visualization of the dataset.
 
