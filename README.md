@@ -8,15 +8,15 @@ The goal of this project is to take images of 43 different types of German traff
 
 ### Packages & Libraries
 
-- [Python 3.5] (https://www.continuum.io/downloads)
-- [TensorFlow] (https://www.tensorflow.org/versions/)
-- [numpy] (https://anaconda.org/anaconda/numpy)
-- [sklearn] (http://scikit-learn.org/stable/install.html)
-- [OpenCV] (https://anaconda.org/menpo/opencv3)
+- [Python 3.5](https://www.continuum.io/downloads)
+- [TensorFlow](https://www.tensorflow.org/versions/)
+- [numpy](https://anaconda.org/anaconda/numpy)
+- [sklearn](http://scikit-learn.org/stable/install.html)
+- [OpenCV](https://anaconda.org/menpo/opencv3)
 
 ### Dataset
 
-- [Traffic Signs Data] (https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip)
+- [Traffic Signs Data](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/5898cd6f_traffic-signs-data/traffic-signs-data.zip)
 
 **Build a Traffic Sign Recognition Project**
 
