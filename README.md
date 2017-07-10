@@ -71,16 +71,36 @@ Number of classes = 43
 
 ## Image Augmentation
 
-There are a couple things to consider when 
+There are a couple things of options we can consider when pre-processing our images
+
+### Normalizing
+
+Normalizing our images makes it easier for our neural network to process them as input. If we do not scale our training vecotors, the ranges of our distributions of feature values would have a high variance from feature to feature. We instead want to normalize our features by subtracting the mean image value (128) and dividing by 128 again to average out the image:
+
+'''
+def pre_process_image(p_image):
+    p_image = (p_image- 128.0)/128.0
+    #p_image = shift_horiz_vert(p_image, 200)
+    return p_image
+'''
+
+Below, we see the same set of images from before, now with normalized features
+
+[normalized features image]
+
+### Shifting Images
+
+Since our final goal is to have our network be able to classify any arbitrary traffic sign, we want to take away the "pureness" of our data set. Imagine your neural network is trained on 10K images of traffic signs that were captured directly in front of the sign, so that in each image the sign is centered. First of all, this is a bad set to use, as you want to have some of these photos captured at skewed angles. To generalize our data set even more, we can shift our images horizontally and vertically. This way we can make sure that our network does not automatically always look in the center of the image to find the sign, and that it can correctly classify a sign even if parts of it do not appear in the image. Below, you can see the same random dataset from before, now randomly shifted:
+
+[shifted image]
 
 
-####2. Include an exploratory visualization of the dataset.
+## Design and Test a Model Architecture
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![alt text][image1]
 
-###Design and Test a Model Architecture
+### Preprocessing
+
 
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
