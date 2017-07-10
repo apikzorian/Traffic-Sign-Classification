@@ -31,33 +31,47 @@ The goal of this project is to take images of 43 different types of German traff
 
 The data set includes 3 pre-partitioned pickle files, each with its own set of images and labels. These sets constitue for our training, testing, and validation sets. The training set is, as you might have guessed, what our neural network will be trained on, while our validation set will be used to check the accuracy of our network on each run. When the network is done, it has been trained on the training set and the validation set has been bleeding into this training as well. However, our network has yet to see the testing set. The idea of keeping it completely separate from the training process is that if we want to have full confidence in our neural network, it should perform as well on a set of data is has never seen before as it did on the data is trained on. 
 
-
-### Splitting the data
-Although we are given pre-partitioned data sets, I took the liberty of combining all of this data, shuffling it, and re-distributing the data in my own way. I personally think the training set should be significantly larger than the validation and testing set, since we want to train our network on as much data as possible. After combining the contents of the 3 pickle files and shuffling them, I used sklearn's handy 'train_test_split' function to divide my data into 
-
-
-'''
-train_test_split
-'''
-
-Using the pandas library, I was able to calculate summary statistics of the traffic signs data set:
-
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
-
-
 ### Visualizing the data
 
 [image of signs]
 
-Above, we can see a few examples of some of the types of traffic signs we have available in our data set. I used the pandas library to 
+Before starting, we first will look at a few examples of some of the types of traffic signs we have available in our data set. Above, you can see an array of different traffic signs, with their labels above them. To get a idea of how many of each type of traffic sign we had, I graphed a histogram of the labels against the frequency of each of their traffic signs in our data:
+
+[image of histogram]
+
+Using `numpy.unique()`, we can get the number of unique traffic signs, as well as the number of times each one appears in our data set. 
+
+
+### Splitting the data
+Although we are given pre-partitioned data sets, I took the liberty of combining all of this data, shuffling it, and re-distributing the data in my own way. I personally think the training set should be significantly larger than the validation and testing set, since we want to train our network on as much data as possible. After combining the contents of the 3 pickle files and shuffling them, I used sklearn's handy 'train_test_split' function to divide my data, allocating 5% of my training data for testing, and then 20% of the remaining training data for validation
+
+
+'''
+X_train, X_test, y_train, y_test = train_test_split(
+    X_all,
+    y_all,
+    test_size=0.05,
+    random_state=832289)
+
+X_train, X_valid, y_train, y_valid = train_test_split(
+    X_train,
+    y_train,
+    test_size=0.20,
+    random_state=832289)
+ '''
+
+Using the pandas library, I was able to calculate summary statistics of the traffic signs data set:
+
+Number of training examples = 39397
+Number of validation examples = 9850
+Number of testing examples = 2592
+Image data shape = (32, 32, 3)
+Number of classes = 43
+
 
 ## Image Augmentation
 
-
+There are a couple things to consider when 
 
 
 ####2. Include an exploratory visualization of the dataset.
