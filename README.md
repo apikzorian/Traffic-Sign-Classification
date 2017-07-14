@@ -112,7 +112,11 @@ My final model consisted of the following layers:
 |						|												|
 |						|												|
  
-For my model, we will use a variation of the LeNet classifier. We have 2 CNNs with 
+For my model, we will use a variation of the LeNet classifier. We have 2 CNNs with relu activation and maxpooling after each of them. These are followed by 3 fully connected layers, each with relu activation. I added dropout after each fully connected layer except for the last. 
+
+### Parameters
+
+I found my best results when I trained my model on a 0.0025 learning rate, 50 epochs, and a batch size of 128. 
 
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
