@@ -33,13 +33,12 @@ The data set includes 3 pre-partitioned pickle files, each with its own set of i
 
 ### Visualizing the data
 
-[image of signs]
+![alt tag](https://image.ibb.co/jkHuVF/Random_Image_Set.png)
 
-Before starting, we first will look at a few examples of some of the types of traffic signs we have available in our data set. Above, you can see an array of different traffic signs, with their labels above them. To get a idea of how many of each type of traffic sign we had, I graphed a histogram of the labels against the frequency of each of their traffic signs in our data:
+Before starting, we first will look at a few examples of some of the types of traffic signs we have available in our data set. Above, you can see an array of different traffic signs, with their labels above them. To get a idea of how many of each type of traffic sign we had, I graphed a histogram of the labels against the frequency of each of their traffic signs in our data. Using `numpy.unique()`, we can get the number of unique traffic signs, as well as the number of times each one appears in our data set:
 
-[image of histogram]
+![alt tag](https://image.ibb.co/njD1AF/samplesperclass.png)
 
-Using `numpy.unique()`, we can get the number of unique traffic signs, as well as the number of times each one appears in our data set. 
 
 
 ### Splitting the data
@@ -71,7 +70,7 @@ Number of classes = 43
 
 ## Image Augmentation
 
-There are a couple things of options we can consider when pre-processing our images
+There are a couple of options we can consider when pre-processing our images. We can first normalize the images, to make sure there is not a high variance for our features for each image. Then, we can go on to use different techniques to add data to our existing data set. Some of these include adding  shifted and flipped versions of our images. These techniques will help generalize our data set to be able to detect images at obscure angles. More importantly, the key to training a good classifier is to provide copious amounts of unique data, so by adding more images, we are in fact making our neaural network more robust.
 
 ### Normalizing
 
@@ -80,47 +79,21 @@ Normalizing our images makes it easier for our neural network to process them as
 '''
 def pre_process_image(p_image):
     p_image = (p_image- 128.0)/128.0
-    #p_image = shift_horiz_vert(p_image, 200)
     return p_image
 '''
 
 Below, we see the same set of images from before, now with normalized features
 
-[normalized features image]
+![alt text][https://image.ibb.co/hmOexv/Random_Image_Set_Norm.png]
 
 ### Shifting Images
 
 Since our final goal is to have our network be able to classify any arbitrary traffic sign, we want to take away the "pureness" of our data set. Imagine your neural network is trained on 10K images of traffic signs that were captured directly in front of the sign, so that in each image the sign is centered. First of all, this is a bad set to use, as you want to have some of these photos captured at skewed angles. To generalize our data set even more, we can shift our images horizontally and vertically. This way we can make sure that our network does not automatically always look in the center of the image to find the sign, and that it can correctly classify a sign even if parts of it do not appear in the image. Below, you can see the same random dataset from before, now randomly shifted:
 
-[shifted image]
+![alt tag](https://image.ibb.co/hsY1AF/Random_Image_Set_Norm_Shift.png)
 
 
 ## Design and Test a Model Architecture
-
-
-
-### Preprocessing
-
-
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
-
-As a first step, I decided to convert the images to grayscale because ...
-
-Here is an example of a traffic sign image before and after grayscaling.
-
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
 
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -139,6 +112,7 @@ My final model consisted of the following layers:
 |						|												|
 |						|												|
  
+For my model, we will use a variation of the LeNet classifier. We have 2 CNNs with 
 
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
