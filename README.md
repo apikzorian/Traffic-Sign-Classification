@@ -45,7 +45,7 @@ Before starting, we first will look at a few examples of some of the types of tr
 Although we are given pre-partitioned data sets, I took the liberty of combining all of this data, shuffling it, and re-distributing the data in my own way. I personally think the training set should be significantly larger than the validation and testing set, since we want to train our network on as much data as possible. After combining the contents of the 3 pickle files and shuffling them, I used sklearn's handy 'train_test_split' function to divide my data, allocating 5% of my training data for testing, and then 20% of the remaining training data for validation
 
 
-`
+```
 X_train, X_test, y_train, y_test = train_test_split(
     X_all,
     y_all,
@@ -57,7 +57,7 @@ X_train, X_valid, y_train, y_valid = train_test_split(
     y_train,
     test_size=0.20,
     random_state=832289)
- `
+ ```
 
 Using the pandas library, I was able to calculate summary statistics of the traffic signs data set:
 
@@ -76,15 +76,15 @@ There are a couple of options we can consider when pre-processing our images. We
 
 Normalizing our images makes it easier for our neural network to process them as input. If we do not scale our training vecotors, the ranges of our distributions of feature values would have a high variance from feature to feature. We instead want to normalize our features by subtracting the mean image value (128) and dividing by 128 again to average out the image:
 
-'''
+```
 def pre_process_image(p_image):
     p_image = (p_image- 128.0)/128.0
     return p_image
-'''
+```
 
 Below, we see the same set of images from before, now with normalized features
 
-![alt tag][https://image.ibb.co/hmOexv/Random_Image_Set_Norm.png]
+![alt tag](https://image.ibb.co/hmOexv/Random_Image_Set_Norm.png)
 
 ### Shifting Images
 
