@@ -92,9 +92,6 @@ Since our final goal is to have our network be able to classify any arbitrary tr
 
 ![alt tag](https://image.ibb.co/hsY1AF/Random_Image_Set_Norm_Shift.png)
 
-
-
-
 ## Design and Test a Model Architecture
 
 
@@ -111,7 +108,15 @@ The best results were reached when the model was trained on a 0.0025 learning ra
 
 ### Training
 
-Our first run at training, we had not yet explored the benefits of adding more data using image augmentation. The only pre-processing we had done was through normalization of the photos, so our data was only a fraction of what it should have been. Using just the pre-processed data set, we were able to achieve 
+Our first run at training, we had not yet explored the benefits of adding more data using image augmentation. The only pre-processing we had done was through normalization of the photos, so our data was only a fraction of what it should have been. Using just the pre-processed data set, we were able to achieve 90% validation and 93% testing accuracies. 
+
+Training was an iterative process, and we did experiment with different variations of our model before deciding to go with the final version. For instance, we added dropout after... and also...
+
+We data points at every 50 batches to keep track of the training and validation accuracies. Below, you can see a plot of these accuracies:
+
+
+
+
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -133,16 +138,15 @@ If a well known architecture was chosen:
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
 
 
+ ## Testing Model on New Images
  
+Once we had reached validation and testing accuracies that we felt comfortable with, we were ready to step outside of our comfort zone and begin testing our model on images that were compltelty separate from our data set. Below, you can see 5 images of German Traffic Signs taken from Google Images
 
-###Test a Model on New Images
-
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt tag](https://image.ibb.co/dttRVF/german_signs.png)
+
 
 The first image might be difficult to classify because ...
 
