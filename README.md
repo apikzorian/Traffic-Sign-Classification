@@ -142,13 +142,14 @@ If a well known architecture was chosen:
  
 Once we had reached validation and testing accuracies that we felt comfortable with, we were ready to step outside of our comfort zone and begin testing our model on images that were compltelty separate from our data set. Below, you can see 5 images of German Traffic Signs taken from Google Images
 
+### Analyzing our data
 
-Here are five German traffic signs that I found on the web:
+Here are five German traffic signs that I found on the web *Note* These images have been resized to 32x32 in this graph, their original versions were each different sizes:
 
 ![alt tag](https://image.ibb.co/dttRVF/german_signs.png)
 
+At first glance, we see a number of features that our classifier may run into when attempting to classify these images. First of all, the fact that these signs had to be resized from their original dimensions will already degrade some of their features. Signs may look stretched vertically or horizontally, and the drop in clarity also takes away from its features. The first image, which is a 50 mp/h sign, is rather dark, so that will also make it harder for our model to detect its lines. Most noteably, the last image is noticably shifted forward, as if the sign itself is bending forward. 
 
-The first image might be difficult to classify because ...
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
