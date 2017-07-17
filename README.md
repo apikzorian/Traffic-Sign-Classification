@@ -93,6 +93,8 @@ Since our final goal is to have our network be able to classify any arbitrary tr
 ![alt tag](https://image.ibb.co/hsY1AF/Random_Image_Set_Norm_Shift.png)
 
 
+
+
 ## Design and Test a Model Architecture
 
 
@@ -100,28 +102,16 @@ Since our final goal is to have our network be able to classify any arbitrary tr
 
 My final model consisted of the following layers:
 
-| Layer         		|     Description	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
  
-For my model, we will use a variation of the LeNet classifier. We have 2 CNNs with relu activation and maxpooling after each of them. These are followed by 3 fully connected layers, each with relu activation. I added dropout after each fully connected layer except for the last. 
+We will use a variation of the LeNet classifier. We have 2 CNNs with relu activation and maxpooling after each of them. These are followed by 3 fully connected layers, each with relu activation. We add dropout after each fully connected layer except for the last. 
 
 ### Parameters
 
-I found my best results when I trained my model on a 0.0025 learning rate, 50 epochs, and a batch size of 128. 
+The best results were reached when the model was trained on a 0.0025 learning rate, 50 epochs, and a batch size of 128. We used an adams optimizer to minimize our loss. 
 
+### Training
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
-
-To train the model, I used an ....
+Our first run at training, we had not yet explored the benefits of adding more data using image augmentation. The only pre-processing we had done was through normalization of the photos, so our data was only a fraction of what it should have been. Using just the pre-processed data set, we were able to achieve 
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -141,6 +131,8 @@ If a well known architecture was chosen:
 * What architecture was chosen?
 * Why did you believe it would be relevant to the traffic sign application?
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+
+
  
 
 ###Test a Model on New Images
