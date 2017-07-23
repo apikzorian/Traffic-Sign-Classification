@@ -110,15 +110,19 @@ The best results were reached when the model was trained on a 0.0025 learning ra
 
 Our first run at training, we had not yet explored the benefits of adding more data using image augmentation. The only pre-processing we had done was through normalization of the photos, so our data was only a fraction of what it should have been. Using just the pre-processed data set, we were able to achieve 90% validation and 93% testing accuracies. 
 
+```
+Training Accuracy: 
+
+```
+
 Training was an iterative process, and we did experiment with different variations of our model before deciding to go with the final version. For instance, we added dropout after... and also...
 
-We data points at every 50 batches to keep track of the training and validation accuracies. Below, you can see a plot of these accuracies:
 
 
 
+We logged data points at every 50 batches to keep track of the training and validation accuracies. Below, you can see a plot of these accuracies:
 
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of ?
