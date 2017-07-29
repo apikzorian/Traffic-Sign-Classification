@@ -124,7 +124,9 @@ The best results were reached when the model was trained on a 0.0025 learning ra
 Our first run at training, we had not yet explored the benefits of adding more data using image augmentation. The only pre-processing we had done was through normalization of the photos, so our data was only a fraction of what it should have been. Using just the pre-processed data set, we were able to achieve 90% validation and 93% testing accuracies. 
 
 ```
-Training Accuracy: 
+Training Accuracy = 0.926
+Validation Accuracy = 0.918
+Test Accuracy = 0.929
 
 ```
 
@@ -134,13 +136,6 @@ Training was an iterative process, and we did experiment with different variatio
 
 
 We logged data points at every 50 batches to keep track of the training and validation accuracies. Below, you can see a plot of these accuracies:
-
-
-
-My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
