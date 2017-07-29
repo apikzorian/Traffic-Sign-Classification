@@ -92,6 +92,19 @@ Since our final goal is to have our network be able to classify any arbitrary tr
 
 ![alt tag](https://image.ibb.co/hsY1AF/Random_Image_Set_Norm_Shift.png)
 
+
+### Brightness Augmentation
+
+We further generalized our data by adding another augmentation step involving changing the brightness of our images. In the case where a traffic sign may be in a dark/shaded area, a classifier will be able to detect it by being trained on data with varying brightness. Below are a couple of examples of traffic signs from the data set that had random brightness augmentation:
+
+
+![alt tag](https://image.ibb.co/fC8yqQ/rand_bright2.png)
+
+
+![alt tag](https://image.ibb.co/bEUhH5/rand_bright1.png)
+
+
+
 ## Design and Test a Model Architecture
 
 
