@@ -108,47 +108,38 @@ We further generalized our data by adding another augmentation step involving ch
 ## Design and Test a Model Architecture
 
 
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
 My final model consisted of the following layers:
 
- 
-We will use a variation of the LeNet classifier. We have 2 CNNs with relu activation and maxpooling after each of them. These are followed by 3 fully connected layers, each with relu activation. We add dropout after each fully connected layer except for the last. 
 
 ### Parameters
 
-The best results were reached when the model was trained on a 0.0025 learning rate, 50 epochs, and a batch size of 128. We used an adams optimizer to minimize our loss. 
+The best results were reached when the model was trained on a 0.0025 learning rate, 15 epochs, and a batch size of 128. We used an adams optimizer to minimize our loss. We found that 15 epochs was our "sweet spot", as models we trained on 12-14 epochs were just not getting a good testing accuracy. On the other hand, once we surpassed 20 epochs, our accuracy had platteaud and if we were able to hit 95% accuracy on just 15 epcohs, anything more than that would take up compile time.
+
+We used a variation of the LeNet classifier, as it was an appropriate place to start since our image set was not very complex. We have 2 CNNs with relu activation and maxpooling after each of them. These are followed by 3 fully connected layers, each with relu activation. 
+
 
 ### Training
 
-Our first run at training, we had not yet explored the benefits of adding more data using image augmentation. The only pre-processing we had done was through normalization of the photos, so our data was only a fraction of what it should have been. Using just the pre-processed data set, we were able to achieve 90% validation and 93% testing accuracies. 
+Training was an iterative process, and we did experiment with different variations of our model before deciding to go with the final version. For instance, we added dropout after each fully connected layer except for the last. The idea behind dropout is to zero out half of the activations of a layer, essentially "dropping" the information to help make your model more robust. This helps avoid overfitting a model, which we later saw when we were testing on randomly selected images. We set a 50% keep probability for dropout during training, and 100% during validation and testing. Below were our results with and without adding dropout:
 
 ```
-Training Accuracy = 0.926
-Validation Accuracy = 0.918
-Test Accuracy = 0.929
+Without dropout
+Training accuracy = 97.9%
+Validation Accuracy = 96.2%
+Test Accuracy = 95.4%
+
+With dropout
+Training accuracy = 84.0%
+Validation Accuracy = 95.4%
+Test Accuracy = 95.7%
 
 ```
 
-Training was an iterative process, and we did experiment with different variations of our model before deciding to go with the final version. For instance, we added dropout after... and also...
-
+Although the validation and training data are higher without dropout, we later noticed when we were testing on our randomly selected images that our dropoutless model actually performed better when classifying images.
 
 
 
 We logged data points at every 50 batches to keep track of the training and validation accuracies. Below, you can see a plot of these accuracies:
-
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-
 
  ## Testing Model on New Images
  
@@ -162,38 +153,38 @@ Here are five German traffic signs that I found on the web *Note* These images h
 
 At first glance, we see a number of features that our classifier may run into when attempting to classify these images. First of all, the fact that these signs had to be resized from their original dimensions will already degrade some of their features. Signs may look stretched vertically or horizontally, and the drop in clarity also takes away from its features. The first image, which is a 50 mp/h sign, is rather dark, so that will also make it harder for our model to detect its lines. Most noteably, the last image is noticably shifted forward, as if the sign itself is bending forward. 
 
-
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
-
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| 50 km/h         		| Stop sign   									| 
+| 80 km/h     			| 80 km/h 										|
+| Roundabout			| Roundabout									|
+| 30 km/h	      		| 30 Km/h   					 				|
+| 120 km/h			    | 60 km/h    							        |   
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
-
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. While this is not as high as the accuracy we were able to get on our test set (95.7%), we can use the top 5 values of the models predictions to determine the its certainty for each value. Tensorflow's ` tf.nn.top_k ` function takes an input and returns the indices of the k largest entries for the last dimension. We thus feed it the logits from our 5 input images and their labels and get the resulting top 5 predictions for each of our 5 images. Below, you can see the softmax values of our model, which show how certain its predictions were for these 5 images:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .20         			| 50 km/h   									| 
+| .35     				| 80 km/h 										|
+| .90					| Roundabout									|
+| .93	      			| 30 km/h   					 				|
+| .26				    | 60 km/h            							|
+
+While it was able to classify the first four images correctly, the 50 km/h and 80 km/h images were not determined with very much certainty. The final image, the 120 km/h, was not predicted correctly. Although most of our image pre-processing was done to help increase our network's ability to detect images at slanted angles, it was still unable to classify the 120 km/h image which was tilted forward. Below are the top 5 predictions for each of our 5 images:
 
 
-For the second image ... 
+![alt tag](http://image.ibb.co/hnetPk/aug_1_new.png)
+![alt tag](http://image.ibb.co/cOXrAQ/aug_2_new.png)
+![alt tag](http://image.ibb.co/ndKtPk/aug_3_new.png)
+![alt tag](http://image.ibb.co/h7UtPk/aug_4_new.png)
+![alt tag](http://image.ibb.co/hiZhH5/aug_5_new.png)
+
+
+What stands out about the 120 km/h image is that although its correct label was not the top predicted label, we can see that it was still in the top 5. The model did not give substantial certainty when it labeled the image as 60 km/h, as it was only at a 26% certainty and the chart displays similar certainties between the top 5 images. The images that were accurately classified seem fairly certain about the chosen labels, especially the Roundabout and 30 km/h images.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
