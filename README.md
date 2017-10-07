@@ -21,12 +21,6 @@ The goal of this project is to take images of 43 different types of German traff
 **Build a Traffic Sign Recognition Project**
 
 
-
-
-## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
-
-
 ## Data Set Summary & Exploration
 
 The data set includes 3 pre-partitioned pickle files, each with its own set of images and labels. These sets constitue for our training, testing, and validation sets. The training set is, as you might have guessed, what our neural network will be trained on, while our validation set will be used to check the accuracy of our network on each run. When the network is done, it has been trained on the training set and the validation set has been bleeding into this training as well. However, our network has yet to see the testing set. The idea of keeping it completely separate from the training process is that if we want to have full confidence in our neural network, it should perform as well on a set of data is has never seen before as it did on the data is trained on. 
@@ -42,7 +36,7 @@ Before starting, we first will look at a few examples of some of the types of tr
 
 
 ### Splitting the data
-Although we are given pre-partitioned data sets, I took the liberty of combining all of this data, shuffling it, and re-distributing the data in my own way. I personally think the training set should be significantly larger than the validation and testing set, since we want to train our network on as much data as possible. After combining the contents of the 3 pickle files and shuffling them, I used sklearn's handy 'train_test_split' function to divide my data, allocating 5% of my training data for testing, and then 20% of the remaining training data for validation
+Although we are given pre-partitioned data sets, I took the liberty of combining all of this data, shuffling it, and re-distributing the data in my own way. I personally think the training set should be significantly larger than the validation and testing set, since we want to train our network on as much data as possible. After combining the contents of the 3 pickle files and shuffling them, I used sklearn's handy `train_test_split` function to divide my data, allocating 5% of my training data for testing, and then 20% of the remaining training data for validation
 
 
 ```
@@ -61,12 +55,13 @@ X_train, X_valid, y_train, y_valid = train_test_split(
 
 Using the pandas library, I was able to calculate summary statistics of the traffic signs data set:
 
+```
 Number of training examples = 39397
 Number of validation examples = 9850
 Number of testing examples = 2592
 Image data shape = (32, 32, 3)
 Number of classes = 43
-
+```
 
 ## Image Augmentation
 
