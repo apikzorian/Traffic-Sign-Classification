@@ -141,6 +141,9 @@ Although the validation and training data are higher without dropout, we later n
 
 We logged data points at every 50 batches to keep track of the training and validation accuracies. Below, you can see a plot of these accuracies:
 
+
+![alt tag](http://image.ibb.co/hc8utw/1007_loss_validation.png)
+
  ## Testing Model on New Images
  
 Once we had reached validation and testing accuracies that we felt comfortable with, we were ready to step outside of our comfort zone and begin testing our model on images that were compltelty separate from our data set. Below, you can see 5 images of German Traffic Signs taken from Google Images
