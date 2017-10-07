@@ -103,14 +103,16 @@ We further generalized our data by adding another augmentation step involving ch
 ## Design and Test a Model Architecture
 
 
-My final model consisted of the following layers:
+For my final model, I used a variation of the LeNet architecture. The original architecture can be seen below:
 
+![alt tag](https://www.pyimagesearch.com/wp-content/uploads/2016/06/lenet_architecture.png)
+
+
+We used a variation of this classifier, as it was an appropriate place to start since our image set was not very complex. We have 2 CNNs with relu activation and maxpooling after each of them. These are followed by 3 fully connected layers, each with relu activation. 
 
 ### Parameters
 
 The best results were reached when the model was trained on a 0.0025 learning rate, 15 epochs, and a batch size of 128. We used an adams optimizer to minimize our loss. We found that 15 epochs was our "sweet spot", as models we trained on 12-14 epochs were just not getting a good testing accuracy. On the other hand, once we surpassed 20 epochs, our accuracy had platteaud and if we were able to hit 95% accuracy on just 15 epcohs, anything more than that would take up compile time.
-
-We used a variation of the LeNet classifier, as it was an appropriate place to start since our image set was not very complex. We have 2 CNNs with relu activation and maxpooling after each of them. These are followed by 3 fully connected layers, each with relu activation. 
 
 
 ### Training
