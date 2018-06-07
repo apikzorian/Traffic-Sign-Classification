@@ -157,7 +157,7 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 50 km/h         		| Stop sign   									| 
+| 50 km/h         		| 50 km/h   									| 
 | 80 km/h     			| 80 km/h 										|
 | Roundabout			| Roundabout									|
 | 30 km/h	      		| 30 Km/h   					 				|
@@ -178,7 +178,7 @@ While it was able to classify the first four images correctly, the 50 km/h and 8
 
 
 ![alt tag](http://image.ibb.co/hnetPk/aug_1_new.png)
-![alt tag](http://image.ibb.co/cOXrAQ/aug_2_new.png)
+![alt tag](https://image.ibb.co/cOXrAQ/aug_2_new.png)
 ![alt tag](http://image.ibb.co/ndKtPk/aug_3_new.png)
 ![alt tag](http://image.ibb.co/h7UtPk/aug_4_new.png)
 ![alt tag](http://image.ibb.co/hiZhH5/aug_5_new.png)
