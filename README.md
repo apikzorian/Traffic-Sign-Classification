@@ -168,9 +168,9 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .20         			| 50 km/h   									| 
+| .60         			| 50 km/h   									| 
 | .35     				| 80 km/h 										|
-| .90					| Roundabout									|
+| .80					| Roundabout									|
 | .93	      			| 30 km/h   					 				|
 | .26				    | 60 km/h            							|
 
